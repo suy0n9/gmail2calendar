@@ -2,4 +2,3 @@ node_modules
 config.js
 package-lock.json
 .clasp.json
-.claspignore
