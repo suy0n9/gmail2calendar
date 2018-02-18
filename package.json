@@ -1,0 +1,15 @@
+{
+  "name": "gmail2calender",
+  "version": "1.0.0",
+  "description": "",
+  "main": "createEvent.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^4.18.0",
+    "eslint-plugin-googleappsscript": "^1.0.0"
+  }
+}
