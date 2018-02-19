@@ -36,6 +36,7 @@ function getTohoData(body) {
   ■上映日 Date  2017/12/24　■時間 Time  20:30～
   ■映画名称 Movie  （字）XXXXXXX
   */
+  var theater = fetchData(body, '■映画館 Theater', '<br>').trim().split(/\s+/)[0]
   var buy_num = fetchData(body, '■購入番号', '<br>')
   var title = fetchData(body,'■映画名称 Movie', '<br>').trim()
   var date = fetchData(body, '■上映日 Date', '<br>')
@@ -45,7 +46,7 @@ function getTohoData(body) {
   var start = new Date(date_arg + ' ' + start_time)
   var end = new Date(+start + 120*60*1000)
 
-  //var THEATER. Use the variable defined in config.gs
+  Logger.log(theater)
   Logger.log(buy_num)
   Logger.log(title)
   Logger.log(date_arg)
@@ -62,6 +63,8 @@ function getUnitedData(body) {
   鑑賞日：2018/01/19（金）
   上映時間：21:30～23:35
   */
+  var theater_place = fetchData(body, '劇場：', '<br>')
+  var theater = 'ユナイテッド・シネマ' + theater_place
   var buy_num = fetchData(body, 'お客さまの購入番号は', '<br>')
   var title = fetchData(body,'作品名：', '<br>')
   var date = fetchData(body, '鑑賞日：', '<br>')
@@ -72,7 +75,8 @@ function getUnitedData(body) {
 
   var start = new Date(date_arg + ' ' + start_time)
   var end = new Date(date_arg + ' ' + end_time)
-  //var THEATER. Use the variable defined in config.gs
+
+  Logger.log(theater)
   Logger.log(buy_num)
   Logger.log(title)
   Logger.log(date_arg)
