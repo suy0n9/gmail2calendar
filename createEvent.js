@@ -4,6 +4,7 @@ function main() {
 }
 
 function createEvent(labelName, keyword) {
+  console.info('=== Start createEvent ===')
   var label = labelName
   var threads = GmailApp.getUserLabelByName(label).getThreads()
   
@@ -32,13 +33,14 @@ function createEvent(labelName, keyword) {
     var thread = threads[i]
     thread.removeLabel(GmailApp.getUserLabelByName(label))
   }
+  console.info('=== End createEvent ===')
 }
 
 function getTohoData(body) {
   /*
-  ■購入番号 Confirmation Number  1003　(TEL:XXX-XXX-XXX)
+  ■購入番号 Confirmation Number  XXXX　(TEL:XXX-XXX-XXX)
   ■映画館 Theater  XXXXX
-  ■上映日 Date  2017/12/24　■時間 Time  20:30～
+  ■上映日 Date  yyyy/mm/dd　■時間 Time  hh:mm～
   ■映画名称 Movie  （字）XXXXXXX
   */
   var obj = new Object()
@@ -61,8 +63,8 @@ function getUnitedData(body) {
   ●作品・劇場・時間
   劇場：XXXXX
   作品名：XXXXXXX
-  鑑賞日：2018/01/19（金）
-  上映時間：21:30～23:35
+  鑑賞日：yyyy/mm/dd（金）
+  上映時間：hh:mm～hh:mm
   */
   var obj = new Object()
   
@@ -97,6 +99,8 @@ function fetchData(str, pre, suf) {
 }
 
 function insertEventToCalendar(title, theater, start, end, text) {
+  console.info('=== Start insertEventToCalendar ===')
+  
   //var calendarId.  Use the variable defined in config.gs
   var event = {
     summary: title,
@@ -112,5 +116,7 @@ function insertEventToCalendar(title, theater, start, end, text) {
     colorId: 3
   }
   event = Calendar.Events.insert(event, calendarId)
+  
+  console.info('=== End insertEventToCalendar ===')
   Logger.log('Event ID: ' + event.getId())
 }
