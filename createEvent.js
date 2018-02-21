@@ -52,7 +52,7 @@ function getTohoData(body) {
 
   obj.buy_num = body.match(/Confirmation Number\s*(\d{4})/)[1]
   obj.theater = fetchData(body, '■映画館 Theater', '<br>').trim().split(/\s+/)[0]
-  obj.title = fetchData(body,'■映画名称 Movie', '/ English<br>').trim()
+  obj.title = fetchData(body,'■映画名称 Movie', '<br>').trim().replace(/\/ [A-Za-z]+/, '')
   
   var date = fetchData(body, '■上映日 Date', '<br>')
   var date_arg = date.match(/\d+\/\d+\/\d+/)
