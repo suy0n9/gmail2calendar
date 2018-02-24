@@ -14,7 +14,7 @@ function createEvent(labelName) {
     for (var j = 0; j < messages.length; j++) {
       var body = messages[j].getBody()
       var subject = messages[j].getSubject()
-      
+
       if (subject.indexOf('TOHO CINEMAS') >0){
         var result = getTohoData(body)
       } else if (subject.indexOf('ユナイテッド・シネマ グループ') >0){
@@ -76,11 +76,11 @@ function getUnitedData(body) {
   var theater_place = fetchData(body, '劇場：', '<br>')
   obj.theater = 'ユナイテッド・シネマ' + theater_place
   obj.buy_num = body.match(/【(\d{4})】/)[1]
-  
+
   obj.title = fetchData(body,'作品名：', '<br>')
   var date = fetchData(body, '鑑賞日：', '<br>')
-  var time = fetchData(body, '上映時間：', '<br>')
   var date_arg = date.match(/\d+\/\d+\/\d+/)
+  var time = fetchData(body, '上映時間：', '<br>')
   var start_time = time.split('～')[0]
   var end_time = time.split('～')[1]
 
@@ -93,8 +93,9 @@ function getUnitedData(body) {
 function fetchData(str, pre, suf) {
   var reg = new RegExp(pre + '.*?' + suf)
   var data = str.match(reg)[0]
-               .replace(pre, '')
-               .replace(suf, '')
+                .replace(pre, '')
+                .replace(suf, '')
+                .replace('</span>','')
   return data
 }
 
