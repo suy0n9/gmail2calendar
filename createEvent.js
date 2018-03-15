@@ -1,15 +1,20 @@
 function main() {
   console.info('=== Start ===')
-  createEvent('movie')
+  createEvent('unexecuted')
   console.info('=== End ===')
 }
 
 function createEvent(labelName) {
-  var label = labelName
-  var threads = GmailApp.getUserLabelByName(label).getThreads()
-  
+  var label = GmailApp.getUserLabelByName(labelName)
+  var threads = label.getThreads()
+  if (threads.length == 0) {
+    Logger.log('No threads')
+    return
+  }
+
   for (var i = 0; i < threads.length; i++) {
-    var messages = threads[i].getMessages()
+    var thread = threads[i]
+    var messages = thread.getMessages()
     
     for (var j = 0; j < messages.length; j++) {
       var body = messages[j].getPlainBody()
@@ -39,6 +44,8 @@ function createEvent(labelName) {
       }
       
     }
+    thread.removeLabel(label)
+    console.log('Remove label, title: ' + result.title)
   }
 }
 
