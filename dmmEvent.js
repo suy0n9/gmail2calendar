@@ -19,7 +19,7 @@ function getDmmData(splitedBody) {
     }
     
     if (str.match(/Skype名/)){
-      obj.skype_name = str.match(/Skype名：([\s\.0-9a-zA-Z]+)/)[1]
+      obj.skype_name = str.match(/Skype名：([\s\.:0-9a-zA-Z]+)/)[1]
       Logger.log('+++++ skype名 ' + obj.skype_name)
     }
      
