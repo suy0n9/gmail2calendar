@@ -84,7 +84,7 @@ function insertMovieEvent(result) {
   var event_data = {
     summary: result.title,
     location: result.theater,
-    description: 'Confirmation Number ' + result.buy_number,
+    description: 'Confirmation Number ' + result.buy_num,
     start: {
       dateTime: result.start.toISOString()
     },
