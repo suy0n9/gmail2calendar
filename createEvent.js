@@ -60,15 +60,15 @@ function insertEnglishEvent(result) {
   //var calendarId.  Use the variable defined in config.gs
   var event_data = {
     summary: result.title,
-    description: '講師名 ' + result.teacher_name + '\n' + 'Skype名 ' + result.skype_name,
+    description: '講師名 ' + result.teacher_name + '\n' + 'Skype名 ' + result.skype_name + '\n' + 'https://eikaiwa.dmm.com/book/book_list/',
     start: {
       dateTime: result.start.toISOString()
     },
     end: {
       dateTime: result.end.toISOString()
     },
-    //GREEN background. Use Calendar.Colors.get() for the full list.
-    colorId: 10
+    //Flamingo background. Use Calendar.Colors.get() for the full list.
+    colorId: 4
   }
   var event = Calendar.Events.insert(event_data, calendarId)
 
