@@ -16,7 +16,7 @@ function getTohoData(splitedBody) {
     }
     
     if (str.match(/Theater/)){
-      obj.theater = str.match(/Theater\s*([^ ]+)/)[1]
+      obj.theater = str.match(/Theater\s*([^ 　]+)/)[1]
       Logger.log('+++++ theater name ' + obj.theater)
     }
 
