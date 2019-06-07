@@ -25,11 +25,11 @@ function getDmmData(splitedBody) {
      
     if (str.match(/ご予約日/)) {
       var date = str.match(/(\d+)年+(\d+)月+(\d+)日/)
-      var date_arg = date[1] + "/" + date[2] + "/" + date[3] 
+      var date_arg = date[1] + '/' + date[2] + '/' + date[3] 
       Logger.log('+++++ date ' + date_arg)
     }
     
-    if (str.match(/開始時間/)){
+    if (str.match(/開始時間：/)){
       var time = str.match(/(\d+)時+(\d+)分/)
       Logger.log('+++++ time ' + time[1] + ':' + time[2])
     }

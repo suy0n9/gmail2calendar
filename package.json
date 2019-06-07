@@ -9,7 +9,10 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "eslint": "^4.18.0",
+    "eslint": "^5.16.0",
     "eslint-plugin-googleappsscript": "^1.0.0"
+  },
+  "dependencies": {
+    "clasp": "^1.0.0"
   }
 }
