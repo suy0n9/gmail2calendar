@@ -20,12 +20,11 @@ function createEvent(labelName) {
       var body = messages[j].getPlainBody()
       var splitedBody = body.split('\n')
       var subject = messages[j].getSubject()
-      
-      if (subject.indexOf('TOHO CINEMAS') >0){
+      if (subject.indexOf('TOHO CINEMAS') !== -1){
         var result = getTohoData(splitedBody)
-      } else if (subject.indexOf('ユナイテッド・シネマ グループ') >0){
+      } else if (subject.indexOf('ユナイテッド・シネマ グループ') !== -1){
         var result = getUnitedData(splitedBody)
-      } else if (subject.indexOf('DMM英会話') >0){
+      } else if (subject.indexOf('レッスン') !== -1){ //DMM英会話
         var result = getDmmData(splitedBody)
       } else {
         return
@@ -41,7 +40,7 @@ function createEvent(labelName) {
         if (subject.indexOf('TOHO CINEMAS') >0 || subject.indexOf('ユナイテッド・シネマ グループ') >0){
           Logger.log('movie')
           insertMovieEvent(result)
-        } else if (subject.indexOf('DMM英会話') >0){
+        } else if (subject.indexOf('レッスン') !== -1){
           insertEnglishEvent(result)
           Logger.log('english')
         }
@@ -60,7 +59,7 @@ function insertEnglishEvent(result) {
   //var calendarId.  Use the variable defined in config.gs
   var event_data = {
     summary: result.title,
-    description: '講師名 ' + result.teacher_name + '\n' + 'Skype名 ' + result.skype_name + '\n' + 'https://eikaiwa.dmm.com/book/book_list/',
+    description: 'https://eikaiwa.dmm.com/book/book_list/',
     start: {
       dateTime: result.start.toISOString()
     },
