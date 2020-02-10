@@ -6,7 +6,9 @@ XX様、yyyy/mm/dd hh:mmのxxxxとのレッスン予約が完了しました。�
 */
   var obj = new Object()
   obj.title = 'DMM英会話'
-  
+
+  Logger.log(splitedBody)
+
   for (var k = 0; k < splitedBody.length; k++) {
     var str = splitedBody[k]
 
@@ -15,7 +17,7 @@ XX様、yyyy/mm/dd hh:mmのxxxxとのレッスン予約が完了しました。�
       var date = str.match(/(\d+)\/(\d+)\/(\d+)/)[0]
       Logger.log('date: ' + date)
     }
-    
+
     // hh:mm
     if (str.match(/(\d+):(\d+)/)) {
       var start_time = str.match(/(\d+):(\d+)/)[0]

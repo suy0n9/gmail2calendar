@@ -15,11 +15,12 @@ function createEvent(labelName) {
   for (var i = 0; i < threads.length; i++) {
     var thread = threads[i]
     var messages = thread.getMessages()
-    
+
     for (var j = 0; j < messages.length; j++) {
       var body = messages[j].getPlainBody()
       var splitedBody = body.split('\n')
       var subject = messages[j].getSubject()
+
       if (subject.indexOf('TOHO CINEMAS') !== -1){
         var result = getTohoData(splitedBody)
       } else if (subject.indexOf('ユナイテッド・シネマ グループ') !== -1){
@@ -32,11 +33,11 @@ function createEvent(labelName) {
 
       var calendar = CalendarApp.getDefaultCalendar()
       var registed_events = calendar.getEvents(result.start, result.end, {search: result.title})
-      
+
       if (registed_events.length == 0) {
         Logger.log('--------------------------')
         Logger.log(result)
-        
+
         if (subject.indexOf('TOHO CINEMAS') >0 || subject.indexOf('ユナイテッド・シネマ グループ') >0){
           Logger.log('movie')
           insertMovieEvent(result)
@@ -47,7 +48,7 @@ function createEvent(labelName) {
       } else {
         Logger.log('alredy exist event: ' + result.title)
       }
-      
+
     }
   }
   thread.removeLabel(label)
@@ -55,7 +56,7 @@ function createEvent(labelName) {
 
 function insertEnglishEvent(result) {
   console.info('=== Start insertEnglishEvent ===')
-  
+
   //var calendarId.  Use the variable defined in config.gs
   var event_data = {
     summary: result.title,
@@ -78,7 +79,7 @@ function insertEnglishEvent(result) {
 
 function insertMovieEvent(result) {
   console.info('=== Start insertMovieEvent ===')
-  
+
   //var calendarId.  Use the variable defined in config.gs
   var event_data = {
     summary: result.title,
